@@ -1,42 +1,796 @@
-/* #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* ---------- Reset ---------- */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* ป้องกันถไหลซ้ายขวา */
+  font-family: Arial, sans-serif;
+}
+
+/* ---------- Navbar ---------- */
+.custom-navbar {
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+  min-height: 60px;
+  font-size: 1.2rem;
+  padding: 15px 20px;
+
+}
+
+
+.custom-navbar.solid {
+  background: rgba(0, 0, 0, 0.9);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.custom-navbar.transparent {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(6px);
+  box-shadow: none;
+}
+
+.custom-navbar .navbar-brand,
+.custom-navbar .nav-link {
+  color: #fff !important;
+}
+
+/* ทำปุ่ม hamburger (mobile) เป็นสีขาว */
+.custom-navbar .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.6); /* กรอบปุ่ม */
+}
+
+.custom-navbar .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.custom-navbar .dropdown-menu {
+  background: #111;           /* พื้นหลังดำ */
+  border: none;
+  border-radius: 8px;
+  padding: 8px 0;
+}
+
+.custom-navbar .dropdown-item {
+  color: #fff;
+  padding: 10px 20px;
+}
+.custom-navbar .dropdown-item:hover {
+  background: #222;
+  color: #4da3ff; /* accent ฟ้า */
+}
+
+
+/* ---------- Section Base ---------- */
+section {
+  width: 100%;
+  padding: 50px 20px; /* ระยะเท่ากันทุก section */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* ---------- Section Cover (Hero) ---------- */
+.section-cover {
+  min-height: 100vh;
+  background: url("/img/bg2.jpg") no-repeat center center/cover;
+  color: white;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.section-cover h1 {
+  font-size: 5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.section-cover p {
+  font-size: 1.2rem;
+  margin-top: 5px;
+}
+
+/* ---------- Divider Line ---------- */
+.line-divider {
+  width: 60%;
+  max-width: 700px;
+  height: 2px;
+  background-color: white;
+  margin: 30px auto;
+}
+
+/* ---------- Expertise Section ---------- */
+.expertise-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  color: white;
+}
+
+.expertise-box {
+  border: 2px solid #fff;
+  border-radius: 12px;
+  padding: 25px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.expertise-box:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-8px);
+}
+
+.expertise-box h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.expertise-box p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* ---------- About Me Section ---------- */
+.section-cover2 {
+  position: relative; /* ให้รองรับ overlay */
+  color: white;
+  text-align: center;
+  z-index: 1; /* ให้ข้อความอยู่บนสุด */
+}
+
+.section-cover2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0); /* 🔥 ความเข้ม overlay (0=ใส, 1=ดำทึบ) */
+  z-index: -1; /* ให้อยู่ใต้ข้อความ */
+}
+.section-cover2 .expertise-box {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  text-align: justify;
+}
+
+/* ---------- Experience Section ---------- */
+.section-cover3 {
+  background-color: #000;
+  color: white;
+  text-align: center;
+}
+
+.section-cover3 h1 {
+  margin-bottom: 30px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 992px) {
+  .section-cover h1 {
+    font-size: 2.5rem;
   }
-  to {
-    transform: rotate(360deg);
+  .section-cover p {
+    font-size: 1rem;
+  }
+  .line-divider {
+    width: 70%;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media (max-width: 576px) {
+  .section-cover {
+    padding-top: 120px;
+  }
+  .section-cover h1 {
+    font-size: 2rem;
+  }
+  .section-cover p {
+    font-size: 0.9rem;
+  }
+  .line-divider {
+    width: 80%;
+  }
+}
+.project-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto; /* รูปอยู่กึ่งกลาง */
+  border-radius: 8px;
+}
+
+.project-text {
+  text-align: justify; /*จัดข้อความเป็นบล็อคงาน */
+  font-size: 1rem;
+  line-height: 1.8;
+}
+h1 {
+  margin: 0;
+  line-height: 1.1;
+  text-align: center;
+}
+.project-title-big {
+  font-size: clamp(2em, 6vw, 2rem);
+  /* เล็กสุด 2rem, ขยายตามจอ 6vw, ใหญ่สุดไม่เกิน 5rem */
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+  word-break: break-word; /* กันข้อความล้น */
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.about-info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+}
+
+.info-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap; /* กันข้อความล้น */
+}
+
+.info-label {
+  font-weight: bold;
+  min-width: 100px; /* ขนาด label เท่ากัน */
+  color: #fff;
+}
+
+.info-text {
+  flex: 1; /* ดันข้อความให้ต่อท้าย */
+  color: #ffffff;
+}
+/* 📱 มือถือเล็ก */
+@media (max-width: 480px) {
+  .project-title-big {
+    font-size: 3em; /* ลดลงเหลือ 3 เท่า */
+  }
+  .project-title-small {
+    font-size: 1.2em;
+    margin-top: -3px;
+  }
+  .info-row {
+    flex-direction: column; /* Label อยู่บรรทัดบน Text อยู่บรรทัดล่าง */
+    gap: 5px;
+  }
+  .info-label {
+    min-width: auto;
   }
 }
 
-.card {
-  padding: 2em;
+/* 📱 มือถือกลาง */
+@media (max-width: 768px) {
+  .project-title-big {
+    font-size: 1.5em; /* ลดลงเหลือ 4 เท่า */
+  }
+  .project-title-small {
+    font-size: 1.3em;
+    margin-top: -4px;
+  }
+}
+/* Project Section */
+.project-box {
+  border: none; /* ไม่เอากรอบ */
+  border-radius: 12px;
+  padding: 20px;
+  text-align: left;
+  background: transparent; /* ไม่มีพื้นหลังขาว */
+  color: white;
 }
 
-.read-the-docs {
-  color: #888;
-} */
+.project-box h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.project-box h4 {
+  font-size: 1.3rem;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.project-box p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.project-box ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.project-box li {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* รูปภาพโปสเตอร์ */
+.project-poster {
+  width: 100%;
+  max-width: 500px; /* กันไม่ให้ใหญ่เกิน */
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+/* 📱 Mobile Small (iPhone SE, 375px) */
+@media (max-width: 480px) {
+  .project-box h1 {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+  .project-box h4 {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+  .project-box p,
+  .project-box li {
+    font-size: 0.9rem;
+    text-align: justify;
+  }
+  .project-poster {
+    max-width: 90%;
+  }
+}
+
+/* 📱 Mobile Medium (iPhone 12–14 Pro, 390–430px) */
+@media (max-width: 768px) {
+  .project-box h1 {
+    font-size: 2.2rem;
+    text-align: center;
+  }
+  .project-box h4 {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  .project-box p,
+  .project-box li {
+    font-size: 1rem;
+  }
+  .project-poster {
+    max-width: 95%;
+  }
+}
+
+/* 💻 Tablet / Desktop */
+@media (min-width: 769px) {
+  .project-box h1 {
+    font-size: 3rem;
+  }
+  .project-box h4 {
+    font-size: 1.3rem;
+  }
+  .project-box p,
+  .project-box li {
+    font-size: 1rem;
+  }
+}
+/* ---------- Card Hover Effect ---------- */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px;
+}
+
+.card-hover:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.885);
+  cursor: pointer;
+}
+
+/* Section ที่มี fade */
+.motivation-section {
+  position: relative;
+  background: #241d41;
+  padding: 60px 20px;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* ✅ Fade overlay ด้านบน/ล่าง */
+.motivation-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0) 20%,
+    rgba(0, 0, 0, 0) 80%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  z-index: 0; /* อยู่ข้างหลัง content */
+  pointer-events: none;
+}
+
+/* ✅ ห่อทุก content ข้างใน section */
+.motivation-content {
+  position: relative;
+  z-index: 1; /* บังคับให้ text และ box ลอยเหนือ fade */
+}
+
+/* กล่องข้อความ */
+.motivation-box {
+  border: 2px solid #fff;
+  border-radius: 12px;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+.motivation-box:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-5px);
+}
+.motivation-box:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-5px);
+}
+/*  Neon Lights Background + Fade */
+.neon-background {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+
+  /* พื้นหลัง Neon */
+  background: radial-gradient(circle at 20% 20%, #ff00ff55, transparent 40%),
+    radial-gradient(circle at 80% 30%, #00ffff55, transparent 40%),
+    radial-gradient(circle at 50% 80%, #00ff8855, transparent 40%);
+  background-color: #0a0a0a;
+  animation: neon-move 8s infinite alternate ease-in-out;
+}
+
+/* ✨ Overlay Fade */
+.neon-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0) 20%,
+    rgba(0, 0, 0, 0) 80%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  z-index: 1;
+  pointer-events: none; /* ไม่บังการคลิก */
+}
+
+/* ข้อความ Neon ให้อยู่เหนือ Fade */
+.neon-text {
+  position: relative;
+  z-index: 2;
+  font-size: 3rem;
+  font-weight: bold;
+  text-shadow: 0 0 5px #fff, 0 0 10px #ff00ff, 0 0 20px #ff00ff,
+    0 0 40px #ff00ff;
+}
+
+/* Animation ของ Neon */
+@keyframes neon-move {
+  0% {
+    background-position: 0% 0%, 100% 50%, 50% 100%;
+  }
+  50% {
+    background-position: 30% 20%, 70% 80%, 60% 40%;
+  }
+  100% {
+    background-position: 0% 80%, 100% 20%, 40% 60%;
+  }
+}
+/* ---------- Footer ---------- */
+.footer {
+  background-color: #000; /* พื้นหลังดำ */
+  color: #fff; /* ตัวอักษรขาว */
+  text-align: center;
+  padding: 20px 10px;
+  margin-top: 40px;
+}
+
+.footer-link {
+  color: #00aaff; /* สีน้ำเงินอ่อนๆ */
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+  color: #66d9ff; /* สีฟ้าอ่อนเวลา hover */
+}
+
+.footer p {
+  margin: 5px 0; /* ลดระยะห่างระหว่างบรรทัด */
+  font-size: 0.95rem;
+}
+/* ---------- Navbar Hover Neon ---------- */
+.nav-neon {
+  color: #fff !important;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-neon:hover {
+  color: #ffffff !important;
+  text-shadow: 0 0 2px #ffffff, 0 0 0px #ffffff, 0 0 0px #ffffff;
+}
+/* ให้ list มีระยะห่างระหว่างข้อ */
+ul {
+  list-style-type: none; /* เอา bullet ออก (เลือกได้) */
+  padding-left: 0; /* กันไม่ให้ชิดซ้ายเกินไป */
+  margin: 0; /* เคลียร์ margin เริ่มต้น */
+}
+
+ul li {
+  margin-bottom: 5px; /*  ระยะห่างแต่ละข้อ */
+  font-size: 1rem; /* ปรับขนาดตัวอักษร */
+  line-height: 1.6; /* เพิ่มระยะห่างบรรทัด */
+}
+/* App.css หรือไฟล์ global css ของคุณ */
+.custom-navbar.solid {
+  background-color: rgba(0, 0, 0, 0.7) !important; /* ดำโปร่ง */
+  backdrop-filter: blur(6px);                      /* เบลอพื้นหลังนิดหน่อย */
+}
+
+.custom-navbar.transparent {
+  background-color: transparent !important;
+}
+.dropdown-menu-dark {
+  background-color: rgba(0, 0, 0, 0.85) !important; /* โปร่งกว่า navbar เล็กน้อย */
+  border: none;                                    /* ตัดเส้นขอบออก */
+  backdrop-filter: blur(4px);                      /* เบลอเล็กน้อย */
+}
+.dropdown-menu-dark .dropdown-item {
+  color: #fff;   /* ข้อความเป็นสีขาว */
+}
+.dropdown-menu-dark .dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* hover เป็นเทาโปร่ง */
+}
+
+/* ให้ table ตะกร้าดูกระชับขึ้น */
+.table td, .table th { vertical-align: middle; }
+
+
+
+/* page app flutter */
+.section_page_app_flutter {
+  margin-top: 80px;
+  margin-bottom: 30px;
+}
+.row_intro{
+  margin-left: 50px;
+  margin-right: 50px;
+  text-align: center;
+}
+.div_section1{
+  text-align: center;
+}
+.col_intro{
+  text-align: center;
+}
+.phone-img {
+  max-width: 250px;   /* จำกัดขนาดสูงสุดของภาพ */
+  height: auto;       /* รักษาสัดส่วน */
+}
+.ul_sectinpage_app {
+  list-style: disc;     /* แสดง bullet แบบจุดกลม */
+  padding-left: 40px; 
+  text-align: left;  /* ดันเข้ามาหน่อยให้เห็น */
+}
+.advantages-section {
+  background: #f9fafb;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: #666;
+}
+
+.advantage-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.advantage-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.advantage-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 12px;
+  color: #111;
+}
+
+.advantage-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin-top: 8px;
+}
+
+
+
+/* ===== Footer Theme ===== */
+.footer {
+  background: #0e0f12;            /* ดำเข้ม */
+  color: #eaecef;                 /* ขาวอมเทา */
+  position: relative;
+  margin-top: 80px;
+}
+
+.footer-gradient {
+  height: 4px;
+  background: linear-gradient(90deg, #4da3ff, rgba(77,163,255,0));
+}
+
+.footer-content {
+  padding: 36px 20px 20px;
+}
+
+/* Grid responsive */
+.footer-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr;     /* mobile */
+}
+@media (min-width: 768px) {
+  .footer-grid { grid-template-columns: 1.2fr 1fr 1fr 1.2fr; }
+}
+
+.footer-col { min-width: 0; }
+.footer-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.footer-subtitle {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 6px 0 10px;
+}
+
+.footer-text { color: #c7ced6; margin: 0 0 6px; }
+.footer-meta { color: #9fb2c8; display:flex; align-items:center; gap:8px; }
+
+.footer-links { list-style: none; margin: 0; padding: 0; }
+.footer-links li { margin: 6px 0; }
+.footer-links a {
+  color: #eaecef; text-decoration: none;
+  transition: color .2s ease;
+}
+.footer-links a:hover { color: #4da3ff; }
+
+/* Social */
+.footer-social { display: flex; gap: 14px; margin-top: 4px; }
+.footer-social a {
+  color: #aab0bb; font-size: 1.25rem; transition: color .2s ease;
+}
+.footer-social a:hover { color: #4da3ff; }
+
+/* Badges */
+.footer-badges { display:flex; flex-wrap:wrap; gap:8px; padding:0; margin:8px 0 0; list-style:none; }
+.footer-badges li{
+  font-size:.82rem; color:#eaf6ff;
+  background: linear-gradient(90deg, #0175C2, #13B9FD);
+  padding:6px 10px; border-radius:999px;
+  box-shadow: 0 4px 12px rgba(1,117,194,.25);
+}
+
+/* Newsletter */
+.footer-form { display:flex; gap:8px; margin-top: 8px; }
+.footer-form input{
+  flex:1; min-width: 0;
+  background:#121318; color:#eaecef;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:10px; padding:10px 12px;
+  outline:none;
+}
+.footer-form input::placeholder{ color:#8da0b5; }
+.footer-form button{
+  background:#4da3ff; color:#081018;
+  border:none; border-radius:10px;
+  padding:10px 14px; font-weight:700;
+  transition: filter .2s ease;
+}
+.footer-form button:hover{ filter: brightness(1.06); }
+.footer-note{ color:#94a3b8; }
+
+/* Bottom row */
+.footer-bottom{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px; padding-top: 18px; margin-top: 18px;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+.footer-copy{ color:#9aa6b2; margin:0; font-size:.95rem; }
+.footer-top{
+  display:inline-flex; align-items:center; gap:8px;
+  background: transparent; color: #eaecef;
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:10px; padding:8px 12px; cursor:pointer;
+  transition: all .2s ease;
+}
+.footer-top:hover{
+  color:#4da3ff; border-color:#4da3ff;
+}
+
+
+/* Card style */
+.xp-card {
+  background: #171922;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 24px;
+  color: #eaecef;
+  box-shadow: 0 6px 18px rgba(0,0,0,.35);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  display: flex;
+  flex-direction: column;
+}
+.xp-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 32px rgba(0,0,0,.5);
+  border-color: rgba(77,163,255,.3);
+}
+
+/* Icon wrapper */
+.xp-icon-wrap {
+  width: 60px; height: 60px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  font-size: 28px;
+}
+.xp-icon-wrap.pink { background: rgba(255,95,162,.15); color: #ff5fa2; }
+.xp-icon-wrap.blue { background: rgba(77,163,255,.15); color: #4da3ff; }
+.xp-icon-wrap.orange { background: rgba(255,145,77,.15); color: #ff914d; }
+
+.xp-icon { font-size: 28px; }
+
+/* Title + highlight */
+.xp-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
+.hl-pink { color: #ff5fa2; }
+.hl-blue { color: #4da3ff; }
+.hl-orange { color: #ff914d; }
+
+/* Text */
+.xp-text {
+  color: #aab0bb;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}

@@ -1,5 +1,6 @@
-body{
-  background-color: black;
+body {
+  /* background: linear-gradient(180deg, #1c1c1c, #222222, #1a1a1a); */
+background-color: black;
   color: white;
   padding: auto;
 }

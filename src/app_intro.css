@@ -1,0 +1,160 @@
+/* app-intro.css */
+:root{
+  --bg:#0e0f12;
+  --panel:#121318;
+  --panel-2:#0b0c10;
+  --text:#eaecef;
+  --muted:#aab0bb;
+  --primary:#4da3ff;
+  --ring:rgba(77,163,255,.25);
+  --card:#171922;
+  --card-border:rgba(255,255,255,.06);
+}
+
+.ai-wrap{
+  background: radial-gradient(1200px 600px at 50% -10%, rgba(77,163,255,.08), transparent),
+              var(--bg);
+  color: var(--text);
+}
+
+/* ---------- HERO ---------- */
+.ai-hero{
+  text-align:center;
+  padding: 64px 0 28px;
+}
+.ai-hero h1{
+  font-weight: 800;
+  letter-spacing:.4px;
+}
+.ai-kicker{
+  color: var(--muted);
+  font-size: .95rem;
+  margin-top: 6px;
+}
+
+/* ---------- INTRO ---------- */
+.ai-intro{
+  margin-top: 12px;
+}
+.ai-section-title{
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.ai-subtitle{ color: var(--muted); }
+.ai-body{ color:#dfe3ea; }
+
+.ai-list{
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin-bottom: 0;
+}
+.ai-list li{
+  margin: 6px 0;
+}
+
+/* ---------- SHOTS (2x2 grid) ---------- */
+.ai-shots{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 14px;
+  justify-items: center;
+}
+.ai-shots img{
+  width: 100%;
+  max-width: 240px;         /* ขนาดสูงสุดของแต่ละภาพ */
+  aspect-ratio: 9 / 19.5;   /* อัตราส่วนจอมือถือ */
+  object-fit: cover;
+  border-radius: 18px;
+  background: var(--panel);
+  border: 1px solid var(--card-border);
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.45),
+    inset 0 0 0 1px rgba(255,255,255,.02);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.ai-shots img:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,.55), 0 0 0 6px var(--ring);
+}
+
+/* ---------- FUTURE BAND ---------- */
+.ai-band{
+  margin-top: 56px;
+  background:
+    linear-gradient(0deg, rgba(255,255,255,.03), rgba(255,255,255,.03)),
+    var(--panel-2);
+  padding: 52px 0;
+  border-top: 1px solid var(--card-border);
+}
+
+/* ---------- CARDS ---------- */
+.ai-card{
+  background: linear-gradient(180deg, var(--card), #12131a);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 22px 18px;
+  text-align: left;
+  height: 100%;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.ai-card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 18px 50px rgba(0,0,0,.45), 0 0 0 6px var(--ring);
+}
+.ai-card h3{
+  font-size: 1.05rem;
+  margin: 10px 0 6px;
+}
+.ai-card p{
+  color: var(--muted);
+  font-size: .95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+.ai-dot{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:38px;height:38px;
+  border-radius:10px;
+  background: rgba(77,163,255,.12);
+  color: var(--primary);
+  font-weight:700;
+  font-size: 1rem;
+  box-shadow: inset 0 0 0 1px rgba(77,163,255,.28);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 767.98px){
+  .ai-hero{ padding: 44px 0 18px; }
+  .ai-shots img{ max-width: 180px; }
+}
+/* สีตามแบรนด์ Flutter */
+:root{
+  --flt-dark:#0e0f12; --flt-blue:#0175C2; --flt-cyan:#13B9FD; --flt-navy:#02569B;
+}
+
+.flt-divider{
+  display:flex; align-items:center; gap:.75rem; margin:18px 0 10px;
+}
+.flt-divider h5{ margin:0; color:#eaecef; font-weight:700; }
+.flt-logo svg{ width:28px; height:28px; display:block; filter: drop-shadow(0 2px 6px rgba(19,185,253,.25)); }
+
+.flt-badges{
+  display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 14px; padding:0; list-style:none;
+}
+.flt-badges li{
+  font-size:.85rem; color:#eaf6ff; background: linear-gradient(90deg,var(--flt-blue),var(--flt-cyan));
+  padding:6px 10px; border-radius:999px; box-shadow:0 6px 16px rgba(1,117,194,.25);
+}
+
+.flt-bullets li{
+  position:relative; padding-left:1.35rem; margin:6px 0;
+}
+.flt-bullets li::before{
+  content:""; position:absolute; left:0; top:.45rem; width:.65rem; height:.65rem;
+  border-radius:3px; transform: rotate(45deg);
+  background: linear-gradient(135deg,var(--flt-cyan),var(--flt-blue));
+  box-shadow:0 0 0 3px rgba(19,185,253,.14);
+}

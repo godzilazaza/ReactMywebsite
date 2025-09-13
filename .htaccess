@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteBase /
+
+# ถ้าเป็นไฟล์/โฟลเดอร์จริง ให้เสิร์ฟตามนั้น
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# นอกนั้นให้ส่งไปที่ index.html เพื่อให้ React จัดการ routing เอง
+RewriteRule . /index.html [L]

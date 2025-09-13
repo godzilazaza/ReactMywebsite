@@ -1,0 +1,60 @@
+/* advantages.css */
+:root{
+  --bg:#0e0f12;
+  --card:#171922;
+  --card-border:rgba(255,255,255,.06);
+  --text:#eaecef;
+  --muted:#aab0bb;
+  --primary:#4da3ff;
+  --ring:rgba(77,163,255,.22);
+}
+
+.advantages-section{
+  background: var(--bg);
+}
+
+.section-subtitle{
+  color: var(--muted);
+  margin: 6px 0 0;
+}
+
+.adv-card{
+  background: linear-gradient(180deg, var(--card), #12131a);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 22px 18px;
+  color: var(--text);
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  transition: transform .25s ease, box-shadow .25s ease;
+  text-align: left;
+}
+.adv-card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 18px 50px rgba(0,0,0,.45), 0 0 0 6px var(--ring);
+}
+
+.adv-card h3{
+  font-size: 1.05rem;
+  margin: 12px 0 6px;
+  color: #fff;
+}
+.adv-card p{
+  font-size: .95rem;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* ไอคอนเช็คแบบไม่พึ่งไลบรารี */
+.adv-dot{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:40px;height:40px;
+  border-radius:12px;
+  background: rgba(77,163,255,.12);
+  color: var(--primary);
+  font-weight:800;
+  font-size: 1rem;
+  box-shadow: inset 0 0 0 1px rgba(77,163,255,.28);
+}
