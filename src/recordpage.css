@@ -1,0 +1,511 @@
+/* ============ Layout helpers ============ */
+.rp-section {
+  padding: 48px 0;
+}
+.rp-container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+.rp-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.rp-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.rp-grid-gap-top {
+  margin-top: 14px;
+}
+.rp-title {
+  margin: 0;
+}
+.rp-title-top {
+  margin-top: 16px;
+}
+
+/* Responsive */
+@media (max-width: 820px) {
+  .rp-grid-3,
+  .rp-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 767.98px) {
+  .rp-section {
+    padding: 40px 0;
+  }
+}
+
+/* ============ Cards / Blocks ============ */
+.rp-card {
+  background: linear-gradient(180deg, var(--card), #12131a);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+.rp-card--warn {
+  border: 1px solid rgba(255, 200, 0, 0.35);
+  background: rgba(255, 200, 0, 0.04);
+}
+.rp-divider {
+  height: 1px;
+  background: var(--card-border);
+  margin: 18px 0;
+}
+.rp-thin-divider {
+  height: 1px;
+  background: var(--card-border);
+  margin: 10px 0 12px;
+}
+
+/* ============ Buttons / Inputs ============ */
+.rp-btn {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  background: linear-gradient(180deg, var(--card), #12131a);
+  color: var(--text);
+  cursor: pointer;
+}
+.rp-btn--danger {
+  background: linear-gradient(180deg, #3a1014, #2b0d10);
+}
+.rp-btn--ghost {
+  background: transparent;
+}
+.rp-select {
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  background: var(--panel);
+  color: var(--text);
+}
+.rp-pill {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--card-border);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.rp-pill--on {
+  background: rgba(52, 199, 89, 0.12);
+  color: #34c759;
+}
+
+/* On mobile: make buttons full width and stack nicely */
+@media (max-width: 820px) {
+  .rp-btn {
+    width: 100%;
+  }
+}
+
+/* ============ Controls row ============ */
+.rp-row-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.rp-row-header--hiw {
+  align-items: center;
+}
+@media (max-width: 820px) {
+  .rp-row-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+.rp-controls {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: auto 1fr;
+  margin-top: 10px;
+}
+.rp-controls-left {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: auto auto auto;
+  align-items: center;
+}
+.rp-controls-right {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: auto auto auto auto;
+  align-items: center;
+}
+.rp-checkbox {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+@media (max-width: 820px) {
+  .rp-controls {
+    grid-template-columns: 1fr;
+  }
+  .rp-controls-left {
+    grid-template-columns: 1fr;
+  }
+  .rp-controls-right {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============ Output ============ */
+.rp-output {
+  min-height: 220px;
+  white-space: pre-wrap;
+  background: var(--panel);
+}
+.rp-output-interim {
+  color: var(--muted);
+}
+.rp-note {
+  margin-top: 10px;
+}
+.rp-metrics {
+  margin-top: 10px;
+}
+
+/* ============ Hero animations wrap ============ */
+.rp-hero-anim {
+  margin-top: 16px;
+  display: grid;
+  place-items: center;
+  gap: 8px;
+}
+
+/* ============ Mic animation ============ */
+.rp-mic {
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.rp-mic--static {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+}
+.rp-mic-ring {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  border: 2px solid rgba(77, 163, 255, 0.35);
+}
+.rp-mic-center {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+.rp-mic-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: var(--primary);
+  box-shadow: 0 0 18px rgba(77, 163, 255, 0.55);
+}
+
+/* ============ Sparkline ============ */
+.rp-wave-path {
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 16 10;
+  filter: drop-shadow(0 2px 10px rgba(77, 163, 255, 0.35));
+}
+
+/* ============ Backdrop (HIW) ============ */
+.rp-backdrop {
+  position: absolute;
+  inset: -2px;
+  border-radius: 18px;
+  overflow: hidden;
+  pointer-events: none;
+}
+.rp-backdrop-svg {
+  display: block;
+  opacity: 0.45;
+}
+
+/* ============ GlowBadge ============ */
+.rp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--card-border);
+  background: rgba(77, 163, 255, 0.08);
+  color: var(--text);
+  box-shadow: 0 0 24px rgba(77, 163, 255, 0.25) inset;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+.rp-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--primary);
+  box-shadow: 0 0 10px rgba(77, 163, 255, 0.8);
+}
+
+/* ============ StepCard ============ */
+.rp-step {
+  position: relative;
+  overflow: hidden;
+  padding: 16px;
+  display: grid;
+  gap: 10px;
+  padding-bottom: 56px;
+}
+.rp-step-index {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+}
+.rp-step-main {
+  position: relative;
+  z-index: 1;
+}
+.rp-step-title {
+  margin: 2px 0 6px;
+}
+.rp-step-desc {
+  margin: 0;
+}
+.rp-step-accent {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  opacity: 0.6;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 10px rgba(77, 163, 255, 0.25));
+}
+
+/* ============ Roadmap ============ */
+.rp-roadmap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  margin-top: 28px;
+}
+@media (max-width: 820px) {
+  .rp-roadmap {
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+.rp-roadmap-card {
+  flex: 1;
+  text-align: center;
+}
+
+/* ============ FlowConnector ============ */
+.rp-flow {
+  overflow: visible;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 10px rgba(77, 163, 255, 0.15));
+}
+.rp-flow-path {
+  stroke: rgba(77, 163, 255, 0.35);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.rp-flow-dot {
+  fill: var(--primary);
+  filter: blur(0.4px);
+}
+
+/* Minor spacing helpers */
+.rp-shots {
+  margin-bottom: 14px;
+}
+.rp-subtitle-gap {
+  margin-bottom: 14px;
+}
+.rp-ul {
+  margin: 0;
+}
+.rp-hiw-card {
+  position: relative;
+  padding: 18px;
+  overflow: hidden;
+}
+
+/* ---------- RecordPage only ---------- */
+.record-page .record-compare {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  margin: 24px 0 40px;
+}
+
+.record-page .record-col {
+  position: relative;
+  background: linear-gradient(180deg, var(--card), #12131a);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  overflow: hidden; /* กันเงาล้น */
+}
+
+/* ✅ เงาอยู่บน layer แยก ไม่กระทบ text */
+.record-page .record-col::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 6px 20px rgba(0,0,0,.3);
+  transition: transform .25s ease, box-shadow .25s ease;
+  z-index: 0;
+}
+
+.record-page .record-col:hover::before {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,.4);
+}
+
+/* ✅ คอนเทนต์ข้างในอยู่ layer บนสุด ไม่โดน transform */
+.record-page .record-compare {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  margin: 24px 0 40px;
+}
+
+.record-page .record-col {
+  position: relative;
+  background: linear-gradient(180deg, var(--card), #12131a);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  overflow: hidden; /* กันเงาล้น */
+  transition: transform .25s ease; /* ✅ เพิ่ม transition ที่กล่องด้วย */
+}
+
+/* ✅ เงาอยู่บน layer แยก ไม่กระทบ text */
+.record-page .record-col::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 6px 20px rgba(0,0,0,.3);
+  transition: transform .25s ease, box-shadow .25s ease;
+  z-index: 0;
+}
+
+.record-page .record-col:hover {
+  transform: scale(1.02); /* ✅ ขยายเล็กน้อย */
+}
+
+.record-page .record-col:hover::before {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 34px rgba(0,0,0,.45);
+}
+
+/* ✅ คอนเทนต์ข้างในอยู่ layer บนสุด ไม่โดน transform */
+.record-page .record-compare {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  margin: 24px 0 40px;
+}
+
+.record-page .record-col {
+  position: relative;
+  background: linear-gradient(180deg, var(--card), #12131a);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease, border .25s ease;
+  box-shadow: 0 6px 20px rgba(0,0,0,.3);
+}
+
+/* ✅ Hover: ลอยขึ้น + เงาลึก + border glow เบาๆ */
+.record-page .record-col:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0,0,0,.45);
+  border-color: var(--ring); /* glow border ตามธีม */
+}
+
+.record-page .record-tag {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: .85rem;
+  background: rgba(255,255,255,.08);
+  color: var(--text);
+  transition: background .25s ease, color .25s ease;
+}
+
+.record-page .record-tag--alt {
+  background: rgba(77,163,255,.12);
+  color: #4da3ff;
+}
+
+.record-page .record-img-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  background: rgba(255,255,255,.04);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  transition: background .25s ease;
+}
+
+.record-page .record-col:hover .record-img-wrap {
+  background: rgba(77,163,255,.08); /* glow background อ่อนๆ */
+}
+
+.record-page .record-img {
+  max-width: 220px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.record-page .record-cap {
+  color: var(--muted);
+  font-size: .9rem;
+  line-height: 1.5;
+}
+
+.record-page .record-note {
+  display: block;
+  margin-top: 6px;
+  font-size: .85rem;
+  color: var(--primary);
+}

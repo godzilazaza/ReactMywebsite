@@ -9,7 +9,7 @@ import {
 } from "../utils/storage";
 import { ToastContainer, toast } from "react-toastify";      // แจ้งเตือนแบบ toast
 import "react-toastify/dist/ReactToastify.css";
-import { Link, useNavigate } from "react-router-dom";        // ใช้ Link เปลี่ยนหน้า (useNavigate ยังไม่ถูกใช้ในไฟล์นี้)
+import { Link } from "react-router-dom";                     // ใช้ Link เปลี่ยนหน้า (useNavigate ยังไม่ถูกใช้ในไฟล์นี้)
 
 type Log = {
   time: string;                                              // เวลาแสดงผล (string ที่ format แล้ว)
@@ -214,19 +214,13 @@ export default function ProgramBarcode() {
     return ((found / total) * 100).toFixed(0);
   }, [logs]);
 
-  // สไตล์หัวตาราง (ภายในคอมโพเนนต์) — ตัวนี้จะไม่ชนกับตัวข้างล่างเพราะอยู่คนละสโคป
-  const th : React.CSSProperties = {
-    textAlign:"left",
-    borderBottom:"1px solid #eee",
-    padding:"8px 10px",
-    background:"#fff",
-    color:"#000"
-  };
+  // สไตล์หัวตาราง (ย้ายออกไปล่างไฟล์เพื่อไม่ชนชื่อตัวแปร)
+  // const th : React.CSSProperties = { ... }   // ← ย้ายไปด้านล่าง/เปลี่ยนชื่อเป็น thDark
 
   return (
     <div style={{ maxWidth: 1100, margin: "0 auto", padding: "96px 16px 24px" }}>
       {/* ส่วนหัว/ปุ่มไปหน้าเพิ่มสินค้า — ถูกคอมเมนต์ไว้ เผื่อเปิดใช้ในอนาคต */}
-      {/* 
+      {/*
       <div className="d-flex align-items-center justify-content-between mb-2">
         <h2 className="m-0">🛒 Product Scanner + Cart (React + ZXing)</h2>
         <div className="d-flex gap-2">
@@ -234,7 +228,7 @@ export default function ProgramBarcode() {
             + เพิ่มสินค้า
           </Link>
         </div>
-      </div> 
+      </div>
       */}
 
       <div className="row g-3">
@@ -244,13 +238,26 @@ export default function ProgramBarcode() {
 
           {/* แถบแจ้งเตือนกรณีไม่พบสินค้า พร้อมปุ่มไปเพิ่ม */}
           {notFoundCode && (
-            <div className="alert alert-warning d-flex align-items-center justify-content-between mt-2" role="alert">
+            <div
+              className="alert d-flex align-items-center justify-content-between mt-2"
+              role="alert"
+              style={{
+                background: "rgba(255,200,0,.08)",
+                border: "1px solid rgba(255,200,0,.25)",
+                color: "var(--text)",
+              }}
+            >
               <div>
                 ไม่พบสินค้าในคลัง: <b>{notFoundCode}</b>
               </div>
               <Link
                 to={`/add-product?code=${encodeURIComponent(notFoundCode)}`}
-                className="btn btn-sm btn-outline-dark"
+                className="btn btn-sm"
+                style={{
+                  border: "1px solid var(--card-border)",
+                  background: "var(--panel)",
+                  color: "var(--text)",
+                }}
               >
                 เพิ่มรายการนี้เลย
               </Link>
@@ -263,12 +270,13 @@ export default function ProgramBarcode() {
               style={{
                 marginTop: 12,
                 padding: 12,
-                border: "1px solid #e5e7eb",
-                borderRadius: 8,
+                border: "1px solid var(--card-border)",
+                borderRadius: 12,
                 display: "flex",
                 gap: 12,
                 alignItems: "center",
-                background: "#000",     // ธีมเข้ม
+                background: "linear-gradient(180deg, var(--card), #12131a)", // ธีมเข้ม
+                color: "var(--text)",
               }}
             >
               {/* แสดงรูปสินค้า ถ้าโหลดรูปไม่สำเร็จให้ซ่อน img */}
@@ -288,7 +296,7 @@ export default function ProgramBarcode() {
                 <div><b>Code:</b> {last.code}</div>
                 <div><b>สินค้า:</b> {last.name}</div>
                 <div><b>ราคา:</b> {last.price}</div>
-                <div><b>สถานะ:</b> <span style={{ color: "green" }}>FOUND</span></div>
+                <div><b>สถานะ:</b> <span style={{ color: "#34c759" }}>FOUND</span></div>
               </div>
 
               {/* ข้อมูลขวา: stat รวม */}
@@ -302,7 +310,15 @@ export default function ProgramBarcode() {
 
           {/* ปุ่ม export CSV + เคลียร์ log */}
           <div style={{ marginTop: 12, display: "flex", gap: 8 }}>
-            <button onClick={() => downloadCSV("scan_log.csv", logs)} className="btn btn-outline-secondary btn-sm">
+            <button
+              onClick={() => downloadCSV("scan_log.csv", logs)}
+              className="btn btn-sm"
+              style={{
+                border: "1px solid var(--card-border)",
+                background: "var(--panel)",
+                color: "var(--text)",
+              }}
+            >
               Export CSV
             </button>
             <button
@@ -310,49 +326,54 @@ export default function ProgramBarcode() {
                 setLogs([]);
                 setDbHit(0);
               }}
-              className="btn btn-outline-secondary btn-sm"
+              className="btn btn-sm"
+              style={{
+                border: "1px solid var(--card-border)",
+                background: "var(--panel)",
+                color: "var(--text)",
+              }}
             >
               Clear Log
             </button>
           </div>
 
           {/* ตารางประวัติการสแกน */}
-          <h5 style={{ marginTop: 16 }}>ประวัติการสแกน</h5>
+          <h5 style={{ marginTop: 16, color: "var(--text)" }}>ประวัติการสแกน</h5>
           <div
             style={{
               maxHeight: 260,
               overflow: "auto",
-              border: "1px solid #eee",
-              borderRadius: 8,
-              background: "#000",       // ธีมเข้ม (ตัวอักษรใน td ยังเป็นสีปกติ)
+              border: "1px solid var(--card-border)",
+              borderRadius: 12,
+              background: "linear-gradient(180deg, var(--card), #12131a)", // ธีมเข้ม
             }}
           >
             <table style={{ width: "100%", borderCollapse: "collapse" }}>
-              <thead style={{ background:"#fff" }}>
+              <thead style={{ background: "var(--card)" }}>
                 <tr>
-                  <th style={th}>เวลา</th>
-                  <th style={th}>โค้ด</th>
-                  <th style={th}>สินค้า</th>
-                  <th style={th}>ราคา</th>
-                  <th style={th}>สถานะ</th>
+                  <th style={thDark}>เวลา</th>
+                  <th style={thDark}>โค้ด</th>
+                  <th style={thDark}>สินค้า</th>
+                  <th style={thDark}>ราคา</th>
+                  <th style={thDark}>สถานะ</th>
                 </tr>
               </thead>
               <tbody>
                 {logs.map((l, i) => (
                   <tr key={i}>
-                    <td style={td}>{l.time}</td>
-                    <td style={td}>{l.code}</td>
-                    <td style={td}>{l.name}</td>
-                    <td style={td}>{l.price}</td>
+                    <td style={tdDark}>{l.time}</td>
+                    <td style={tdDark}>{l.code}</td>
+                    <td style={tdDark}>{l.name}</td>
+                    <td style={tdDark}>{l.price}</td>
                     <td
                       style={{
-                        ...td,
+                        ...tdDark,
                         color:
                           l.status === "FOUND"
-                            ? "green"
+                            ? "#34c759"
                             : l.status === "NOT_IN_DB"
-                            ? "#b08900"
-                            : "crimson",
+                            ? "#ffd666"
+                            : "#ff6b6b",
                       }}
                     >
                       {l.status}
@@ -361,7 +382,7 @@ export default function ProgramBarcode() {
                 ))}
                 {!logs.length && (
                   <tr>
-                    <td style={td} colSpan={5}>ยังไม่มีข้อมูล</td>
+                    <td style={tdDark} colSpan={5}>ยังไม่มีข้อมูล</td>
                   </tr>
                 )}
               </tbody>
@@ -392,7 +413,7 @@ export default function ProgramBarcode() {
       {/* ปุ่มบังคับ enable sound (ถ้าบราว์เซอร์บล็อกออโต้เพลย์) — ปิดไว้ก่อน
       <button className="btn btn-sm btn-outline-secondary mt-2" onClick={ensureAudio}>
         Enable Sound
-      </button> 
+      </button>
       */}
     </div>
   );
@@ -400,15 +421,22 @@ export default function ProgramBarcode() {
 
 // ====== สไตล์ส่วนกลางของตาราง (นอกคอมโพเนนต์) ======
 // หมายเหตุ: ด้านบนมี th ภายในคอมโพเนนต์อีกตัวหนึ่ง (สโคปคนละส่วน จึงไม่ชนกัน)
-const th: React.CSSProperties = {
+// ↑ เดิมเคยประกาศ th ซ้ำ ทำให้ชนกัน — ปรับเป็น thDark/tdDark แทน เพื่อคงคอมเมนต์เดิมไว้
+const thDark: React.CSSProperties = {
   textAlign: "left",
-  borderBottom: "1px solid #eee",
-  padding: "8px 10px",
-  background: "#fafafa",
+  borderBottom: "1px solid var(--card-border)",
+  padding: "10px 12px",
+  color: "var(--text)",
+  background: "var(--card)",
+  position: "sticky",
+  top: 0,
+  zIndex: 1,
 };
 
-const td: React.CSSProperties = {
-  borderBottom: "1px solid #f0f0f0",
-  padding: "8px 10px",
+const tdDark: React.CSSProperties = {
+  borderBottom: "1px solid var(--card-border)",
+  padding: "10px 12px",
   fontSize: 14,
+  color: "var(--text)",
+  background: "transparent",
 };

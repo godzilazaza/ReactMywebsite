@@ -10,6 +10,20 @@
   --card:#171922;
   --card-border:rgba(255,255,255,.06);
 }
+/* ใช้กับทุก input, textarea */
+.form-control::placeholder {
+  color: var(--muted);
+  opacity: 0.7;  /* ทำให้ดูบางลง */
+}
+.exp-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(77, 163, 255, 0.25);
+  border-color: var(--primary);
+}
+
+.exp-card:hover .exp-img {
+  transform: scale(1.08);
+}
 
 .ai-wrap{
   background: radial-gradient(1200px 600px at 50% -10%, rgba(77,163,255,.08), transparent),
@@ -158,3 +172,7 @@
   background: linear-gradient(135deg,var(--flt-cyan),var(--flt-blue));
   box-shadow:0 0 0 3px rgba(19,185,253,.14);
 }
+
+
+
+

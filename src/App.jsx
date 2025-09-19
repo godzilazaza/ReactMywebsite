@@ -26,6 +26,7 @@ import Welcome from "./pages/Welcome";
 import ProgramBarcode from "./pages/ProgramBarcode";
 import AddProduct from "./pages/AddProduct";
 import App_scan from "./pages/App_scan_flutter";
+import RecordPage from "./pages/RecordMeeting";
 // import หน้า Welcome (แสดงหลังจาก login สำเร็จ พร้อมปุ่ม logout)
 import {
   FaEnvelope,
@@ -34,7 +35,6 @@ import {
   FaMapMarkerAlt,
   FaChevronUp,
 } from "react-icons/fa";
-
 function App() {
   const year = new Date().getFullYear();
   const backToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
@@ -62,18 +62,15 @@ function App() {
           brand="Portfolio"
           links={[
             { to: "/", label: "HOME" },
-            { to: "/login", label: "LOGIN" },
-            { to: "/register", label: "REGISTER" },
             { to: "#about", label: "ABOUT ME" },
             { to: "#experiences", label: "EXPERIENCES" },
             {
               label: "DEMO APP",
               subLinks: [
-                {
-                  to: "/programBarcode",
-                  label: "PROGRAM BARCODE WEB APPLICATION",
-                },
-                { to: "/app-scan", label: "APP SCAN IOS FLUTTER" },
+                {to: "/login",label: "DEMO LOGIN AND REGISTER.",},
+                {to: "/programBarcode",label: "PROGRAM BARCODE WEB APPLICATION.",},
+                { to: "/app-scan", label: "APP SCAN IOS FLUTTER." },
+                { to: "/record-meeting", label: "RECORD MEETING PROGRAM."},
                 // เพิ่มเดโมอื่นๆ ได้ เช่น:
                 // { to: "/face-detection", label: "Face Detection" },
               ],
@@ -96,6 +93,9 @@ function App() {
           <Route path="/programBarcode" element={<ProgramBarcode />} />
           <Route path="/add-product" element={<AddProduct />} />
           <Route path="/app-scan" element={<App_scan />} />
+          <Route path="/record-meeting" element={<RecordPage />} />
+ 
+ 
         </Routes>
       </BrowserRouter>
 
